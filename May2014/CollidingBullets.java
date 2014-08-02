@@ -4,6 +4,11 @@ import java.util.Random;
 // The following class is written to solve a puzzle posted by IBM:
 //     http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/Challenges/May2014.html
 //
+// Although this methodology seems to be 'correct', it is not practical. 
+// IBM have requested a solution to 10 decimal places. 
+// It take a very long time for this monte-carlo engine to produce the rquired accuracy.
+// Note that this monte-carlo engine is single threaded. 
+
 public class CollidingBullets  implements Simulator{
 
 	int      m_numBullets;
