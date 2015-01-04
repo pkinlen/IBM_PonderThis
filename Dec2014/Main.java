@@ -1,3 +1,7 @@
+/* The following program has been written to solve the IBM December 2014 'Ponder This'
+ * puzzle: http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/Challenges/December2014.html
+ */
+
 import java.util.Random;
 
 public class Main {
@@ -11,21 +15,26 @@ public class Main {
 	public int[]       m_colCounter;
     /////////////////////////////////////////////////////////////////////////	
 	public static void main(String[] args) {
-	    System.out.println("Starting...");
-		Main main = new Main();
+		long startNano = System.nanoTime();
 		
-		int numRows             = 7;
-		int numCols             = 7;
-		int targetNumSolutions  = 29;
+	    System.out.println("Starting...");
+	    
+	    int  randSeed           = -1; // To use the timer, use a negative seed.
+		Main main               = new Main(randSeed);
+		
+		int  numRows            = 5;
+		int  numCols            = 6;
+		int  targetNumSolutions = 29;
 		
 		main.findSolution(numRows, numCols, targetNumSolutions);
 		
-		System.out.println("Finished.");
+		double elapsedTime = (System.nanoTime() - startNano) * 1e-9;
+		System.out.println("Finished in " + Double.toString(elapsedTime) + " sec.");
 	}
 	///////////////////////////////////////////////////////////////////////
-	public Main(){
+	public Main(int randSeed){
 		
-		resetRandomGenerator(0); // to use the timer as the seed, use negative parameter
+		resetRandomGenerator(randSeed); 
 	}
 	///////////////////////////////////////////////////////////////////////////////
 	public void findSolution(int numRows, int numCols, long targetNumSolutions){
