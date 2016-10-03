@@ -1,8 +1,7 @@
 package Calc;
 
-
 public class PonderThis {
-	public static long m_counter;  // This counter is just used for diagnostics. 
+	 private static long m_counter;  // This counter is just used for diagnostics. 
 	
      public static void main ( String[] argss){
     	 
@@ -12,7 +11,6 @@ public class PonderThis {
     	 
     	 System.out.println("Finished.");
      }
-     
      ////////////////////////////////////////////////////
      public static Solution solve(){
     	 m_counter = 0;
@@ -23,7 +21,7 @@ public class PonderThis {
     	 
     	 while ( ! finished ){
     	     System.out.println(   "The number of allowed flaws is: " + Integer.toString(numAllowedFlaws) 
-                                 + " \tcounter: "                                     + Long.toString(m_counter)          );       
+                                 + " \tcounter: "                     + Long.toString(m_counter)          );       
              
     		 finalSolution = solve(new Solution(numAllowedFlaws));
 
@@ -61,9 +59,8 @@ public class PonderThis {
     		
     		i++;
             m_counter++;    
-    		//////////////////////////////////////////////////////////////////
+    		/* /////////////////////////////////////////////////////////////////
     		// We now have a bit of code that might be helpful for debugging:
-            /*
             //if ( true) {
             if ( m_counter % 100000L == 0L) {
             	System.out.println("counter: " + Long.toString(m_counter) + ", current: " + Integer.toString(s . getCurrent()));
@@ -74,5 +71,5 @@ public class PonderThis {
         return null; // i.e. a solution not found.    	 
     	     		
      }
-     ///////////////////////////////////////////
+     ///////////////////////////////////////////ß
 }
