@@ -1,22 +1,24 @@
 package Calc;
 
 public class Solution {
+    public static final int m_length = 24;
     public static int[]     m_val;     // containing 24 ints between 1234 and 4321
         
-    public        boolean[] m_used;
-    public        int[]     m_indices; 
+    public        boolean[] m_used;     // The data in m_used could be deduced from the contents of m_indices
+    public        int[]     m_indices;  // however we have used m_used to help the run-time efficiency.
     public        int       m_current;
     
     public        int       m_allowedFlaws;
     public        int       m_flawsSoFar;
     
-    public static final int m_length = 24;
     /////////////////////////////////////////////////////
     public Solution(Solution a, int i){
     	  	
     	m_indices = new int    [m_length];
     	m_used    = new boolean[m_length];
-    	
+
+    	// I have a feeling that the efficiency of this algorithm can could be much improved.
+   	    // Currently there are lots of superfluous copying of arrays.
     	System.arraycopy(a.m_indices, 0, m_indices, 0, m_length);
     	System.arraycopy(a.m_used,    0, m_used,    0, m_length);
     	
@@ -89,7 +91,7 @@ public class Solution {
     	  case '2' : return "b";
     	  case '3' : return "c";
     	  case '4' : return "d";
-    	  default:   return "c";
+    	  default:   return "?";
     	}
     }
     ///////////////////////////////////////////////////
@@ -100,37 +102,39 @@ public class Solution {
     	m_flawsSoFar   = 0;
     	m_allowedFlaws = allowedFlaws;
     	
-    	m_val        = new int    [m_length];
     	m_indices    = new int    [m_length];
     	
     	m_current    = 0;
     	m_indices[0] = 0;
-    
-    	
-    	m_val[ 0] = 1234;
-    	m_val[ 1] = 1243;
-    	m_val[ 2] = 1324;
-    	m_val[ 3] = 1342;
-    	m_val[ 4] = 1423;
-    	m_val[ 5] = 1432;
-    	m_val[ 6] = 2134;
-    	m_val[ 7] = 2143;
-    	m_val[ 8] = 2314;
-    	m_val[ 9] = 2341;
-    	m_val[10] = 2413;
-    	m_val[11] = 2431;
-    	m_val[12] = 3124;
-    	m_val[13] = 3142;
-    	m_val[14] = 3241;
-    	m_val[15] = 3214;
-    	m_val[16] = 3412;
-    	m_val[17] = 3421;
-    	m_val[18] = 4123;
-    	m_val[19] = 4132;
-    	m_val[20] = 4213;
-    	m_val[21] = 4231;
-    	m_val[22] = 4312;
-    	m_val[23] = 4321;
+     
+    	if ( m_val == null){ // Should only need to initialise this once.
+        	m_val        = new int    [m_length];
+    	    	
+	    	m_val[ 0] = 1234;
+	    	m_val[ 1] = 1243;
+	    	m_val[ 2] = 1324;
+	    	m_val[ 3] = 1342;
+	    	m_val[ 4] = 1423;
+	    	m_val[ 5] = 1432;
+	    	m_val[ 6] = 2134;
+	    	m_val[ 7] = 2143;
+	    	m_val[ 8] = 2314;
+	    	m_val[ 9] = 2341;
+	    	m_val[10] = 2413;
+	    	m_val[11] = 2431;
+	    	m_val[12] = 3124;
+	    	m_val[13] = 3142;
+	    	m_val[14] = 3241;
+	    	m_val[15] = 3214;
+	    	m_val[16] = 3412;
+	    	m_val[17] = 3421;
+	    	m_val[18] = 4123;
+	    	m_val[19] = 4132;
+	    	m_val[20] = 4213;
+	    	m_val[21] = 4231;
+	    	m_val[22] = 4312;
+	    	m_val[23] = 4321;
+    	}
     }
     ////////////////////////////////////////////////////////////////
     public int getNumFlaws(int i){
@@ -181,5 +185,7 @@ public class Solution {
     public boolean alreadyUsed(int i){
     	return m_used[i];    	
     }
+    //////////////////////////////////////////////
+    public int getCurrent() { return m_current; }
     //////////////////////////////////////////////
 }
