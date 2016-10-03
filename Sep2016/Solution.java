@@ -1,15 +1,15 @@
 package Calc;
 
 public class Solution {
-    public static final int m_length = 24;
-    public static int[]     m_val;     // containing 24 ints between 1234 and 4321
+    public  static final int m_length = 24;
+    private static int[]     m_val;     // containing 24 ints between 1234 and 4321
         
-    public        boolean[] m_used;     // The data in m_used could be deduced from the contents of m_indices
-    public        int[]     m_indices;  // however we have used m_used to help the run-time efficiency.
-    public        int       m_current;
+    private        boolean[] m_used;     // The data in m_used could be deduced from the contents of m_indices
+    private        int[]     m_indices;  // however we have used m_used to help the run-time efficiency.
+    private        int       m_current;
     
-    public        int       m_allowedFlaws;
-    public        int       m_flawsSoFar;
+    private        int       m_allowedFlaws;
+    private        int       m_flawsSoFar;
     
     /////////////////////////////////////////////////////
     public Solution(Solution a, int i){
@@ -22,7 +22,7 @@ public class Solution {
     	System.arraycopy(a.m_indices, 0, m_indices, 0, m_length);
     	System.arraycopy(a.m_used,    0, m_used,    0, m_length);
     	
-    	m_current = a.m_current;
+    	m_current      = a.m_current;
     	m_allowedFlaws = a.m_allowedFlaws;
     	m_flawsSoFar   = a.m_flawsSoFar    +  getNumFlaws(i);
 
@@ -174,8 +174,7 @@ public class Solution {
     	
     	a = a - ( a % 1000);
     	b = b - ( b % 1000);
-    
-    		
+        		
     	if ( a == b)
     		numFlaws++;
     	
